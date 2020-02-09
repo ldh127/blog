@@ -226,9 +226,9 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # 修改数据库为MySQL，并进行配置
-        'NAME': 'mysite',       # 数据库的名称
+        'NAME': 'myblog',       # 数据库的名称
         'USER': 'root',        # 数据库的用户名
-        'PASSWORD': 'python',  # 数据库的密码
+        'PASSWORD': 'ldh197519',  # 数据库的密码
         'HOST': '127.0.0.1',
         'PORT': 3306,
         'OPTIONS': {'charset': 'utf8', }

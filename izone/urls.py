@@ -45,9 +45,9 @@ sitemaps = {
 urlpatterns = [
     url(r'^adminx/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),  # allauth
-    url(r'^accounts/', include('oauth.urls', namespace='oauth')),  # oauth,只展现一个用户登录界面
-    url('', include('blog.urls', namespace='blog')),  # blog
-    url(r'^comment/',include('comment.urls',namespace='comment')), # comment
+    url(r'^accounts/', include(('oauth.urls','oauth'), namespace='oauth')),  # oauth,只展现一个用户登录界面
+    url('', include(('blog.urls','blog'), namespace='blog')),  # blog
+    url(r'^comment/',include(('comment.urls','comment'),namespace='comment')), # comment
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')), # robots
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'), # 网站地图
     url(r'^feed/$', AllArticleRssFeed(), name='rss'),   # rss订阅
@@ -57,4 +57,4 @@ if settings.API_FLAG:
     urlpatterns.append(url(r'^api/v1/',include(router.urls,namespace='api')))    # restframework
 
 if settings.TOOL_FLAG:
-    urlpatterns.append(url(r'^tool/', include('tool.urls',namespace='tool')))    # tool
+    urlpatterns.append(url(r'^tool/', include(('tool.urls','tool'),namespace='tool')))    # tool
