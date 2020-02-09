@@ -41,7 +41,7 @@ API_FLAG = False
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.tendcode.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -203,12 +203,16 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # 使用django-redis缓存页面，缓存配置如下：
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": "redis://:ldh197519@47.104.75.158:6379/1",
+        #"LOCATION": "redis://:ldh197519@127.0.0.1:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {"max_connections": 100}
+            #"PASSWORD": "ldh197519",
         }
     }
 }
